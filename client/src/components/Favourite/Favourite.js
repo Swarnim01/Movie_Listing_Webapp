@@ -19,8 +19,8 @@ const Favourite = () => {
           console.log('result',result);
         if (error) toast.error(error);
         else {
-          toast.success('Succesfully Added to favourites');
-          setfavourites(result);
+          toast.success('Succesfully Removed to favourites');
+          setfavourites(result.favourite);
         }
       });
   };
