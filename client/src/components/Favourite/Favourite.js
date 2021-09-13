@@ -3,7 +3,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { red } from '@material-ui/core/colors';
 import toast from 'react-hot-toast';
 import { UserContext } from '../../App';
-const POSTER_PATH = 'http://image.tmdb.org/t/p/original';
+const POSTER_PATH = 'https://image.tmdb.org/t/p/original';
 const Favourite = () => {
   const { state, dispatch } = useContext(UserContext);
   const [favourites, setfavourites] = useState(null);

@@ -8,7 +8,7 @@ import { UserContext } from '../../App';
 import './Movies.css';
 
 
-const POSTER_PATH = 'http://image.tmdb.org/t/p/original';
+const POSTER_PATH = 'https://image.tmdb.org/t/p/original';
 
 
 const MovieSection = ({searchmovies}) => {
