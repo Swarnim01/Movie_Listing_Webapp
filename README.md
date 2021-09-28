@@ -37,3 +37,12 @@ npm install
 npm start
 ```
 Frontend will run in port 5000 due proxy url in package.json file.
+
+### Screenshots : 
+
+#### Login/Signup Screen
+![login screen](https://user-images.githubusercontent.com/56025388/135136635-850c6474-9bda-4e2d-bdb8-af437f8b29f8.png 'Authentication screens')
+
+
+#### Home Screen
+![Home screen](https://user-images.githubusercontent.com/56025388/135136646-c31b50c6-bf9f-411a-b474-59e651dc4818.png 'Home screens')
