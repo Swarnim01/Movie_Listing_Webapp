@@ -8,7 +8,7 @@
 
 - Add/Remove Favourites
 
-It used The Movie DB open API for movie listing and searching.
+It uses The Movie DB API for movie listing and searching.
 ## Get Started
 
 - Fork the repository. With the repository forked, you’re ready to clone it so that you have a local       working copy of the code base.
