@@ -28,7 +28,6 @@ const Login = ({ toggleSign }) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.error) toast.error(data.error);
         else {
           toggleSign(true);
