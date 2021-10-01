@@ -51,7 +51,7 @@ const Routing = ({setisSignin , searchmovies}) => {
 const App = () => {
   const [ isSignin , setisSignin] = useState(false);
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [searchmovies, setsearchmovies] = useState(null);
+  const [searchmovies, setsearchmovies] = useState(null); 
   return (
     <div>
       <UserContext.Provider value={{ state, dispatch }}>
