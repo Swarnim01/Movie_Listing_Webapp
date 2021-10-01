@@ -16,7 +16,7 @@ const MovieSection = ({searchmovies}) => {
     const [ movies , setmovies] = useState(null);
     const [page, setpage] = useState(1);
     useEffect(() => {
-        const url = 'https://api.themoviedb.org/3/movie/now_playing/?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1';
+        const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1';
         fetch(url).then((res) => res.json()).then((data) => {
             console.log(data);
             setmovies(data);
@@ -26,7 +26,7 @@ const MovieSection = ({searchmovies}) => {
       if(e===0)
       return;
       setpage(e);
-      const url = `https://api.themoviedb.org/3/movie/now_playing/?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
+      const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
       fetch(url).then((res)=>res.json()).then((data)=> {
         setmovies(data);
       })
@@ -36,7 +36,7 @@ const MovieSection = ({searchmovies}) => {
         setTimeout(setmovies(searchmovies) , 2000);
         else
         {
-          const url = 'https://api.themoviedb.org/3/movie/now_playing/?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1';
+          const url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1';
         fetch(url).then((res) => res.json()).then((data) => {
             setmovies(data);
         })
