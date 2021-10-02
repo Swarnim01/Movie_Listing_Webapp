@@ -173,7 +173,7 @@ export default function Navbar({ setisSignin , handlesearch }) {
     </Menu>
   );
       const search = (query) => {
-        const url = `https://api.themoviedb.org/3/search/movie/?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-USpage=1&query=${query}`;
+        const url = `https://api.themoviedb.org/3/search/movie?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-USpage=1&query=${query}`;
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
