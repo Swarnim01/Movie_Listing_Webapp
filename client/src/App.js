@@ -28,13 +28,13 @@ const Routing = ({setisSignin , searchmovies}) => {
           if (data) {
             setisSignin(true);
             dispatch({ type: 'USER', payload: data.userdata });
-          } else history.push('/login');
+          } else history.push('/');
         });
     }, []);
   return (
     <Switch>
       <Route
-        path='/login'
+        path='/'
         exact
         render={() => <Login toggleSign={(value) => setisSignin(value)} />}
       />
