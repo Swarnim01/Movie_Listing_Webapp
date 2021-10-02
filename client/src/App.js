@@ -30,6 +30,7 @@ const Routing = ({ setisSignin, searchmovies }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
+          history.replace("/home");
           setisSignin(true);
           dispatch({ type: "USER", payload: data.userdata });
         } else history.push("/login");
