@@ -75,24 +75,30 @@ export default function IndividualMovie() {
             {currentMovie.tagline && (
               <p className="movie-tagline">{currentMovie.tagline}</p>
             )}
-            {currentMovie.runtime && (
-              <div className="movie-details-wrapper">
+            <div className="movie-details-wrapper">
+              {currentMovie.runtime && (
                 <p className="movie-runtime">
-                  Runtime - <span>{currentMovie.runtime}&nbsp;Minutes</span>
+                  Runtime-<span>{currentMovie.runtime}&nbsp;Minutes</span>
                 </p>
-                {currentMovie.genres &&
-                  currentMovie.genres.map((genre) => {
-                    const url = `https://www.google.com/search?q=Genres+${genre.name}`;
-                    return (
-                      <p className="movie-genres">
-                        <a href={url} target="_blank" rel="noreferrer">
-                          {genre.name}
-                        </a>
-                      </p>
-                    );
-                  })}
-              </div>
-            )}
+              )}
+              {currentMovie.release_date && (
+                <p className="movie-runtime">
+                  Release Date-<span>{currentMovie.release_date}</span>
+                </p>
+              )}
+              {currentMovie.genres &&
+                currentMovie.genres.map((genre) => {
+                  const url = `https://www.google.com/search?q=Genres+${genre.name}`;
+                  return (
+                    <p className="movie-genres">
+                      <a href={url} target="_blank" rel="noreferrer">
+                        {genre.name}
+                      </a>
+                    </p>
+                  );
+                })}
+            </div>
+            {currentMovie.overview && <p>{currentMovie.overview}</p>}
           </div>
         </div>
       ) : (

@@ -30,7 +30,7 @@
 }
 
 .movie-info {
-    border: solid white 2px;
+    /* border: solid white 2px; */
     width: auto;
     flex-grow: 1;
     color: white;
@@ -52,15 +52,18 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    margin-top: 1rem;
+}
+
+.movie-details-wrapper p {
+    margin: 0 2rem 0 0;
 }
 
 .movie-runtime span {
     font-weight: bold;
-    margin: 0 1rem;
 }
 
 .movie-genres {
-    margin: 0 1rem;
     border: solid 1px white;
     border-radius: 1rem;
     padding: 0.25rem 1rem;
