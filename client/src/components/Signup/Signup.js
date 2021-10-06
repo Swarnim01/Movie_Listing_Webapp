@@ -35,14 +35,12 @@ const Signup = () => {
       });
   };
   return (
-    <div className="body">
-      <div
+    <div
       style={{
         margin: '10rem auto',
         border: '1px solid white',
         width: '40rem',
       }}
-      className="container"
     >
       <div
         style={{
@@ -107,7 +105,7 @@ const Signup = () => {
               type='submit'
               value='Sign Up'
               style={{
-                color: 'white',
+                color: 'black',
                 backgroundColor: 'red',
                 border: 'none',
               }}
@@ -122,8 +120,6 @@ const Signup = () => {
         </form>
       </main>
     </div>
-    </div>
-    
   );
 };
 export default Signup;
