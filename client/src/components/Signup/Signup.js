@@ -35,7 +35,8 @@ const Signup = () => {
       });
   };
   return (
-    <div
+    <div className="body">
+      <div
       style={{
         margin: '10rem auto',
         border: '1px solid white',
@@ -121,6 +122,8 @@ const Signup = () => {
         </form>
       </main>
     </div>
+    </div>
+    
   );
 };
 export default Signup;
