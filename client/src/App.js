@@ -12,6 +12,7 @@ import { BrowserRouter, Route, Switch, useHistory } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { reducer, initialState } from "./reducer/userReducer";
 import Signup from "./components/Signup/Signup";
+import Movie from "./components/IndiviualMovie/IndividualMovie";
 import "./App.css";
 import Favourite from "./components/Favourite/Favourite";
 
@@ -54,6 +55,7 @@ const Routing = ({ setisSignin, searchmovies }) => {
         render={() => <MovieSection searchmovies={searchmovies} />}
       />
       <Route path="/favourite" exact component={Favourite} />
+      <Route path="/movie/:movieId" exact component={Movie} />
     </Switch>
   );
 };

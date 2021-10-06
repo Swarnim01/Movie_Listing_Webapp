@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useHistory } from "react-router-dom";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -10,6 +11,7 @@ import "./Movies.css";
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
 
 const MovieSection = ({ searchmovies }) => {
+  let history = useHistory();
   console.log("serachmoveis", searchmovies);
   const [movies, setmovies] = useState(null);
   const [page, setpage] = useState(1);
@@ -71,8 +73,7 @@ const MovieSection = ({ searchmovies }) => {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-        }}
-      >
+        }}>
         {/* {movies && ( <div onClick={() => alterpage(page + 1)}>
             <ArrowBackIosIcon
               style={{
@@ -96,7 +97,9 @@ const MovieSection = ({ searchmovies }) => {
             />
           </div>)} */}
         {movies &&
-          movies.results.map(({ poster_path, id }) => {
+          movies.results.map((element) => {
+            console.log(element);
+            const { poster_path, id } = element;
             return (
               <div style={{ margin: "0.3rem", position: "relative" }}>
                 <img
@@ -104,13 +107,15 @@ const MovieSection = ({ searchmovies }) => {
                   alt="poster"
                   style={{ width: "10rem", height: "auto" }}
                   className="posters"
+                  onClick={() => {
+                    history.push(`/movie/${id}`);
+                  }}
                 />
                 <div
                   className="favouritetab"
                   onClick={() => {
                     addfavourite(id, poster_path);
-                  }}
-                >
+                  }}>
                   Favourite{"  "} &nbsp;
                   <FavoriteIcon style={{ color: red[500] }} />
                 </div>
