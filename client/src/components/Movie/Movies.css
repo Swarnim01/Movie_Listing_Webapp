@@ -25,25 +25,3 @@
   opacity: 1;
   position: absolute;
 }
-.pagination{
-  display: flex;
-  max-width: 100px;
-  margin:40px auto;
-  margin-bottom: 0;
-  align-items: center;
-}
-.page-number{
-  color: white;
-  margin: 0 10px;
-  border: 2px solid white;
-  padding: 5px 12px;
-  border-radius: 4px;
-  transition: all 0.4s ease-out;
-}
-.page-number:hover{
-  color: black;
-  background: white;
-  cursor: pointer;
-  font-weight: bold;
-  transform: rotate(360deg);
-}
