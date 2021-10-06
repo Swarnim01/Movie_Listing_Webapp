@@ -36,7 +36,7 @@ npm install
 ```shell
 npm start
 ```
-server will run in port 5000 and frontend will request to 5000 port itself due proxy url in package.json file.
+Frontend will run in port 5000 due proxy url in package.json file.
 
 ### Screenshots : 
 
