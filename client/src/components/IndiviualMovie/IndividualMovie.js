@@ -44,7 +44,8 @@ export default function IndividualMovie() {
       .then((data) => {
         console.log(data);
         setCurrentMovie(data);
-      });
+      })
+      .catch((err) => {console.log(err);});
   }, [currentMovie, movieId]);
   useEffect(() => {
     if (cast) return;
@@ -52,7 +53,6 @@ export default function IndividualMovie() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.cast);
         setCast(data.cast);
         setLastIndex(data.cast.length / CAST_PER_PAGE);
         if (lastIndex % CAST_PER_PAGE > 0) {
@@ -60,25 +60,22 @@ export default function IndividualMovie() {
             return prevVal++;
           });
         }
-      });
+      })
+      .catch((err) => {console.log(err);});
   }, [cast, lastIndex, movieId]);
   useEffect(() => {
     if (!cast) return;
-    const index = castIndex * CAST_PER_PAGE - 1;
+    const index = castIndex * CAST_PER_PAGE - 5;
     let temp = [];
     for (let i = index; i < index + CAST_PER_PAGE; i++) {
       temp.push(cast[i]);
     }
     setReducedCast(temp);
-    console.log(temp);
   }, [cast, castIndex]);
   return (
     <div style={{ margin: "2rem auto", width: "95%" }}>
       {currentMovie && cast ? (
-        <div
-          style={{
-            display: "flex",
-          }}>
+        <div className="movie-info-wrapper">
           <div
             style={{
               margin: "0.3rem",
@@ -115,24 +112,32 @@ export default function IndividualMovie() {
             )}
             <div className="movie-details-wrapper">
               {currentMovie.runtime && (
-                <p className="movie-runtime">
-                  Runtime-<span>{currentMovie.runtime}&nbsp;Minutes</span>
-                </p>
+                <div className="movie-runtime">
+                  <p>Runtime</p>
+                  <span>{currentMovie.runtime}&nbsp;Minutes</span>
+                </div>
               )}
               {currentMovie.release_date && (
-                <p className="movie-runtime">
-                  Release Date-<span>{currentMovie.release_date}</span>
-                </p>
+                <div className="movie-releaseDate">
+                  <p>Release Date</p>
+                 <span>{currentMovie.release_date}</span>
+                </div>
+              )}
+              {currentMovie.vote_average && (
+                <div className="movie-vote">
+                  <p>Votes</p>
+                  <span>{currentMovie.vote_average}/10</span>
+                </div>
               )}
               {currentMovie.genres &&
                 currentMovie.genres.map((genre) => {
                   const url = `https://www.google.com/search?q=Genres+${genre.name}`;
                   return (
-                    <p className="movie-genres">
+                    <div className="movie-genres">
                       <a href={url} target="_blank" rel="noreferrer">
                         {genre.name}
                       </a>
-                    </p>
+                    </div>
                   );
                 })}
             </div>
@@ -153,14 +158,16 @@ export default function IndividualMovie() {
                     {reducedCast.map((cast) => {
                       return (
                         <div>
-                          <img
+                          {cast.profile_path && (<img
                             src={`${POSTER_PATH}${cast.profile_path}`}
                             alt="cast"
                             style={{
-                              width: "5rem",
-                              height: "auto",
+                              width: "6rem",
+                              height: "auto",                              
+                              border: "solid 2px #cccccc",
+                              borderRadius: "1rem"                              
                             }}
-                          />
+                          />)}
                           <p className="cast-name">{cast.name}</p>
                           <p className="cast-character">{cast.character}</p>
                         </div>
@@ -177,10 +184,34 @@ export default function IndividualMovie() {
                 </>
               )}
             </div>
+            <div className="movie-language-wrapper">
+            {currentMovie.spoken_languages && ( 
+              <>
+              <span>Languages Used:</span>
+              {
+                currentMovie.spoken_languages.map(language =>{
+                  return <p>{language.english_name}</p>;
+                })
+              }
+              </>  
+            )}
+            </div>
+            <div className="movie-production-wrapper">
+            {currentMovie.production_companies && ( 
+              <>
+              <span>Production Companies:</span>
+              {
+                currentMovie.production_companies.map(company =>{
+                  return <p>{company.name}</p>;
+                })
+              }
+              </>  
+            )}
+            </div>
           </div>
         </div>
       ) : (
-        <h1>Fetching Details</h1>
+        <h1 style={{color: 'white'}}>Fetching Details</h1>
       )}
     </div>
   );

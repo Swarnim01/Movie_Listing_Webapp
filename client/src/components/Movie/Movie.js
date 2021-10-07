@@ -23,7 +23,8 @@ const MovieSection = ({ searchmovies }) => {
       .then((data) => {
         console.log(data);
         setmovies(data);
-      });
+      })
+      .catch((err) => {console.log(err);});
   }, []);
   const alterpage = (e) => {
     if (e === 0) return;
@@ -45,7 +46,8 @@ const MovieSection = ({ searchmovies }) => {
         .then((res) => res.json())
         .then((data) => {
           setmovies(data);
-        });
+        })
+        .catch((err) => {console.log(err);});
     }
   }, [searchmovies]);
   const addfavourite = (id, poster_path) => {
