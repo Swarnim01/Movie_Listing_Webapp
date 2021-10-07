@@ -79,3 +79,28 @@
     color: blue;
     border-color: blue;
 }
+
+.cast-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cast-wrapper div {
+    text-align: center;
+}
+
+.cast-wrapper p {
+    margin: 0;
+}
+
+.cast-name {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.cast-character {
+    font-size: 1rem;
+    color: #cccccc;
+}

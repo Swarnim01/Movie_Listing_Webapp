@@ -3,9 +3,12 @@ import { useParams } from "react-router";
 import toast from "react-hot-toast";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import { red } from "@material-ui/core/colors";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import "./IndiviualMovie.css";
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
+const CAST_PER_PAGE = 5;
 
 const addfavourite = (id, poster_path) => {
   fetch("/favourite", {
@@ -29,7 +32,10 @@ const addfavourite = (id, poster_path) => {
 export default function IndividualMovie() {
   const { movieId } = useParams();
   const [currentMovie, setCurrentMovie] = useState(null);
-
+  const [cast, setCast] = useState(null);
+  const [reducedCast, setReducedCast] = useState(null);
+  const [castIndex, setCastIndex] = useState(1);
+  const [lastIndex, setLastIndex] = useState(null);
   useEffect(() => {
     if (currentMovie) return;
     const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1`;
@@ -40,10 +46,35 @@ export default function IndividualMovie() {
         setCurrentMovie(data);
       });
   }, [currentMovie, movieId]);
-  console.log(movieId);
+  useEffect(() => {
+    if (cast) return;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.cast);
+        setCast(data.cast);
+        setLastIndex(data.cast.length / CAST_PER_PAGE);
+        if (lastIndex % CAST_PER_PAGE > 0) {
+          setLastIndex((prevVal) => {
+            return prevVal++;
+          });
+        }
+      });
+  }, [cast, lastIndex, movieId]);
+  useEffect(() => {
+    if (!cast) return;
+    const index = castIndex * CAST_PER_PAGE - 1;
+    let temp = [];
+    for (let i = index; i < index + CAST_PER_PAGE; i++) {
+      temp.push(cast[i]);
+    }
+    setReducedCast(temp);
+    console.log(temp);
+  }, [cast, castIndex]);
   return (
     <div style={{ margin: "2rem auto", width: "95%" }}>
-      {currentMovie ? (
+      {currentMovie && cast ? (
         <div
           style={{
             display: "flex",
@@ -51,23 +82,30 @@ export default function IndividualMovie() {
           <div
             style={{
               margin: "0.3rem",
-              position: "relative",
-              border: "solid white 2px",
-              width: "10rem",
             }}>
-            <img
-              src={`${POSTER_PATH}${currentMovie.poster_path}`}
-              alt="poster"
-              style={{ width: "10rem", height: "auto" }}
-              className="posters"
-            />
             <div
-              className="favouritetab"
-              onClick={() => {
-                addfavourite(currentMovie.id, currentMovie.poster_path);
+              style={{
+                border: "solid white 2px",
+                width: "10rem",
+                position: "relative",
               }}>
-              Favourite{"  "} &nbsp;
-              <FavoriteIcon style={{ color: red[500] }} />
+              <img
+                src={`${POSTER_PATH}${currentMovie.poster_path}`}
+                alt="poster"
+                style={{
+                  width: "10rem",
+                  height: "auto",
+                }}
+                className="posters"
+              />
+              <div
+                className="favouritetab"
+                onClick={() => {
+                  addfavourite(currentMovie.id, currentMovie.poster_path);
+                }}>
+                Favourite{"  "} &nbsp;
+                <FavoriteIcon style={{ color: red[500] }} />
+              </div>
             </div>
           </div>
           <div className="movie-info">
@@ -99,6 +137,46 @@ export default function IndividualMovie() {
                 })}
             </div>
             {currentMovie.overview && <p>{currentMovie.overview}</p>}
+            <div>
+              {reducedCast && (
+                <>
+                  <h1>Cast</h1>
+                  <div className="cast-wrapper">
+                    {castIndex > 1 && (
+                      <ArrowBackIosIcon
+                        onClick={() =>
+                          setCastIndex((prevState) => prevState - 1)
+                        }
+                      />
+                    )}
+
+                    {reducedCast.map((cast) => {
+                      return (
+                        <div>
+                          <img
+                            src={`${POSTER_PATH}${cast.profile_path}`}
+                            alt="cast"
+                            style={{
+                              width: "5rem",
+                              height: "auto",
+                            }}
+                          />
+                          <p className="cast-name">{cast.name}</p>
+                          <p className="cast-character">{cast.character}</p>
+                        </div>
+                      );
+                    })}
+                    {castIndex !== lastIndex && (
+                      <ArrowForwardIosIcon
+                        onClick={() =>
+                          setCastIndex((prevState) => prevState + 1)
+                        }
+                      />
+                    )}
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </div>
       ) : (
