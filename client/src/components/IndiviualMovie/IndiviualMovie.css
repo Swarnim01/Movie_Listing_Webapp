@@ -1,0 +1,171 @@
+.posters {
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.posters:hover {
+    transform: scale(1.2);
+}
+
+.favouritetab {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    opacity: 0;
+    width: 100%;
+    padding: 20px;
+    position: absolute;
+    color: white;
+    bottom: 0;
+    text-align: center;
+    transition: 0.1s ease-in-out;
+    cursor: pointer;
+}
+
+.favouritetab:hover {
+    opacity: 1;
+    position: absolute;
+}
+
+.movie-info-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .movie-info-wrapper {
+        flex-direction: row;
+    }
+}
+
+.movie-info {
+    /* border: solid white 2px; */
+    width: auto;
+    flex-grow: 1;
+    color: white;
+    padding: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+    .movie-info {
+        width: 100%;
+    }
+}
+
+.movie-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.movie-tagline {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.movie-details-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.movie-details-wrapper p {
+    margin: 0;
+}
+
+.movie-runtime,
+.movie-releaseDate,
+.movie-vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+}
+
+.movie-runtime span,
+.movie-releaseDate span,
+.movie-vote span {
+    font-weight: bold;
+}
+
+.movie-genres {
+    border: solid 1px white;
+    border-radius: 1rem;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    align-self: center;
+}
+
+.movie-genres a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.movie-genres:hover {
+    color: blue;
+    border-color: blue;
+}
+
+.cast-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.cast-wrapper div {
+    text-align: center;
+}
+
+.cast-wrapper p {
+    margin: 0;
+}
+
+.cast-name {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.cast-character {
+    font-size: 0.8rem;
+    color: #cccccc;
+}
+
+.movie-language-wrapper,
+.movie-production-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.movie-language-wrapper span,
+.movie-production-wrapper span {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.movie-language-wrapper p,
+.movie-production-wrapper p {
+    margin: 0;
+}
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.visibility-visible {
+    visibility: visible;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
