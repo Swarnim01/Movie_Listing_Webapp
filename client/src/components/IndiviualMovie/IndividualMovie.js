@@ -56,7 +56,6 @@ export default function IndividualMovie() {
       .then((res) => res.json())
       .then((data) => {
         setCast(data.cast);
-        console.log(data.cast);
         setLastIndex(data.cast.length / CAST_PER_PAGE);
         if (lastIndex % CAST_PER_PAGE > 0) {
           setLastIndex((prevVal) => {
@@ -70,13 +69,13 @@ export default function IndividualMovie() {
   }, [cast, lastIndex, movieId]);
   useEffect(() => {
     if (!cast) return;
+    // console.log("castIndex", castIndex, "lastIndex", lastIndex);
     const index = castIndex * CAST_PER_PAGE - 5;
     let temp = [];
     for (let i = index; i < index + CAST_PER_PAGE; i++) {
       if (i >= cast.length) break;
       temp.push(cast[i]);
     }
-    console.log(temp);
     setReducedCast(temp);
   }, [cast, castIndex]);
   return (
@@ -154,13 +153,14 @@ export default function IndividualMovie() {
                 <>
                   <h1>Cast</h1>
                   <div className="cast-wrapper">
-                    {castIndex > 1 && (
-                      <ArrowBackIosIcon
-                        onClick={() =>
-                          setCastIndex((prevState) => prevState - 1)
-                        }
-                      />
-                    )}
+                    <ArrowBackIosIcon
+                      onClick={() => setCastIndex((prevState) => prevState - 1)}
+                      className={
+                        castIndex > 1
+                          ? "visibility-visible cursor-pointer"
+                          : "visibility-hidden"
+                      }
+                    />
 
                     {reducedCast.map((cast) => {
                       return (
@@ -182,13 +182,15 @@ export default function IndividualMovie() {
                         </div>
                       );
                     })}
-                    {castIndex !== lastIndex && (
-                      <ArrowForwardIosIcon
-                        onClick={() =>
-                          setCastIndex((prevState) => prevState + 1)
-                        }
-                      />
-                    )}
+
+                    <ArrowForwardIosIcon
+                      onClick={() => setCastIndex((prevState) => prevState + 1)}
+                      className={
+                        castIndex > lastIndex
+                          ? "visibility-hidden"
+                          : "visibility-visible cursor-pointer"
+                      }
+                    />
                   </div>
                 </>
               )}

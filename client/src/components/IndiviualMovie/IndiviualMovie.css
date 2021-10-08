@@ -157,3 +157,15 @@
 .movie-production-wrapper p {
     margin: 0;
 }
+
+.visibility-hidden {
+    visibility: hidden;
+}
+
+.visibility-visible {
+    visibility: visible;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
