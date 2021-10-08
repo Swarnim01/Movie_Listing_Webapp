@@ -45,7 +45,9 @@ export default function IndividualMovie() {
         console.log(data);
         setCurrentMovie(data);
       })
-      .catch((err) => {console.log(err);});
+      .catch((err) => {
+        console.log(err);
+      });
   }, [currentMovie, movieId]);
   useEffect(() => {
     if (cast) return;
@@ -54,6 +56,7 @@ export default function IndividualMovie() {
       .then((res) => res.json())
       .then((data) => {
         setCast(data.cast);
+        console.log(data.cast);
         setLastIndex(data.cast.length / CAST_PER_PAGE);
         if (lastIndex % CAST_PER_PAGE > 0) {
           setLastIndex((prevVal) => {
@@ -61,15 +64,19 @@ export default function IndividualMovie() {
           });
         }
       })
-      .catch((err) => {console.log(err);});
+      .catch((err) => {
+        console.log(err);
+      });
   }, [cast, lastIndex, movieId]);
   useEffect(() => {
     if (!cast) return;
     const index = castIndex * CAST_PER_PAGE - 5;
     let temp = [];
     for (let i = index; i < index + CAST_PER_PAGE; i++) {
+      if (i >= cast.length) break;
       temp.push(cast[i]);
     }
+    console.log(temp);
     setReducedCast(temp);
   }, [cast, castIndex]);
   return (
@@ -120,7 +127,7 @@ export default function IndividualMovie() {
               {currentMovie.release_date && (
                 <div className="movie-releaseDate">
                   <p>Release Date</p>
-                 <span>{currentMovie.release_date}</span>
+                  <span>{currentMovie.release_date}</span>
                 </div>
               )}
               {currentMovie.vote_average && (
@@ -158,16 +165,18 @@ export default function IndividualMovie() {
                     {reducedCast.map((cast) => {
                       return (
                         <div>
-                          {cast.profile_path && (<img
-                            src={`${POSTER_PATH}${cast.profile_path}`}
-                            alt="cast"
-                            style={{
-                              width: "6rem",
-                              height: "auto",                              
-                              border: "solid 2px #cccccc",
-                              borderRadius: "1rem"                              
-                            }}
-                          />)}
+                          {cast.profile_path && (
+                            <img
+                              src={`${POSTER_PATH}${cast.profile_path}`}
+                              alt="cast"
+                              style={{
+                                width: "6rem",
+                                height: "auto",
+                                border: "solid 2px #cccccc",
+                                borderRadius: "1rem",
+                              }}
+                            />
+                          )}
                           <p className="cast-name">{cast.name}</p>
                           <p className="cast-character">{cast.character}</p>
                         </div>
@@ -185,33 +194,29 @@ export default function IndividualMovie() {
               )}
             </div>
             <div className="movie-language-wrapper">
-            {currentMovie.spoken_languages && ( 
-              <>
-              <span>Languages Used:</span>
-              {
-                currentMovie.spoken_languages.map(language =>{
-                  return <p>{language.english_name}</p>;
-                })
-              }
-              </>  
-            )}
+              {currentMovie.spoken_languages && (
+                <>
+                  <span>Languages Spoken:</span>
+                  {currentMovie.spoken_languages.map((language) => {
+                    return <p>{language.english_name}</p>;
+                  })}
+                </>
+              )}
             </div>
             <div className="movie-production-wrapper">
-            {currentMovie.production_companies && ( 
-              <>
-              <span>Production Companies:</span>
-              {
-                currentMovie.production_companies.map(company =>{
-                  return <p>{company.name}</p>;
-                })
-              }
-              </>  
-            )}
+              {currentMovie.production_companies && (
+                <>
+                  <span>Production Companies:</span>
+                  {currentMovie.production_companies.map((company) => {
+                    return <p>{company.name}</p>;
+                  })}
+                </>
+              )}
             </div>
           </div>
         </div>
       ) : (
-        <h1 style={{color: 'white'}}>Fetching Details</h1>
+        <h1 style={{ color: "white" }}>Fetching Details</h1>
       )}
     </div>
   );
