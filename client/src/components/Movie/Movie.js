@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import { useParams } from "react-router";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
@@ -11,45 +12,49 @@ import "./Movies.css";
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
 
 const MovieSection = ({ searchmovies }) => {
+  let { pageNumber } = useParams();
   let history = useHistory();
   console.log("serachmoveis", searchmovies);
   const [movies, setmovies] = useState(null);
-  const [page, setpage] = useState(1);
+  // const [page, setpage] = useState(1);
   useEffect(() => {
-    const url =
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1";
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
+    console.log("PageNumber", pageNumber, url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setmovies(data);
       })
-      .catch((err) => {console.log(err);});
-  }, []);
-  const alterpage = (e) => {
-    if (e === 0) return;
-    setpage(e);
-    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setmovies(data);
+      .catch((err) => {
+        console.log(err);
       });
-  };
+  }, [pageNumber]);
+  // const alterpage = (e) => {
+  //   if (e === 0) return;
+  //   setpage(e);
+  //   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setmovies(data);
+  //     });
+  // };
   useEffect(() => {
     if (searchmovies && searchmovies.results)
       setTimeout(setmovies(searchmovies), 2000);
     else {
-      const url =
-        "https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1";
+      const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
       fetch(url)
         .then((res) => res.json())
         .then((data) => {
           setmovies(data);
         })
-        .catch((err) => {console.log(err);});
+        .catch((err) => {
+          console.log(err);
+        });
     }
-  }, [searchmovies]);
+  }, [pageNumber, searchmovies]);
   const addfavourite = (id, poster_path) => {
     fetch("/favourite", {
       method: "post",
@@ -100,7 +105,6 @@ const MovieSection = ({ searchmovies }) => {
           </div>)} */}
         {movies &&
           movies.results.map((element) => {
-            console.log(element);
             const { poster_path, id } = element;
             return (
               <div style={{ margin: "0.3rem", position: "relative" }}>
@@ -128,25 +132,33 @@ const MovieSection = ({ searchmovies }) => {
 
       {movies && (
         <div className="pagination">
-          <div onClick={() => alterpage(page - 1)}>
+          {+pageNumber > 1 ? (
+            <Link to={`/home/${parseInt(pageNumber) - 1}`}>
+              <ArrowBackIosIcon
+                style={{
+                  cursor: "pointer",
+                  color: "white",
+                }}
+              />
+            </Link>
+          ) : (
             <ArrowBackIosIcon
               style={{
                 cursor: "pointer",
                 color: "white",
               }}
             />
-          </div>
+          )}
+          <div className="page-number">{pageNumber}</div>
 
-          <div className="page-number">{page}</div>
-
-          <div onClick={() => alterpage(page + 1)}>
+          <Link to={`/home/${parseInt(pageNumber) + 1}`}>
             <ArrowForwardIosIcon
               style={{
                 cursor: "pointer",
                 color: "white",
               }}
             />
-          </div>
+          </Link>
         </div>
       )}
     </div>
