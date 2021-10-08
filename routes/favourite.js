@@ -22,6 +22,7 @@ FavouriteRouter.post("/favourite", protected, async (req, res, next) => {
   const { id, poster_path } = req.body;
   console.log(req.user);
   const data = await Users.find({
+    email: req.user.email,
     "favourite.movieId": id,
     "favourite.poster_path": poster_path,
   });
