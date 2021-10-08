@@ -1,223 +1,215 @@
-
-
-.body{
-  height: 100vh;
-  width: 100vw;
-  background: url(../../assets/123.jpg) no-repeat center center fixed ;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  overflow: hidden;
+.body {
+    height: 100vh;
+    width: 100vw;
+    background: url(../../assets/123.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    overflow-y: auto;
 }
-.container{
-  background-image: url("../../assets/theatre.jpg");
 
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 0 0;
-  
-  border-radius: 10px;
-
-box-shadow:  5px 5px 10px #111111,
-             -5px -5px 10px #171717;
+.container {
+    background-image: url("../../assets/theatre.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #111111, -5px -5px 10px #171717;
 }
 
 .ba {
-  border-style: solid;
-  border-width: 1px;
+    border-style: solid;
+    border-width: 1px;
 }
 
 .b--black {
-  border-color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
 }
 
 .b--transparent {
-  border-color: transparent;
+    border-color: transparent;
 }
 
 .db {
-  display: block;
+    display: block;
 }
 
 .dib {
-  display: inline-block;
+    display: inline-block;
 }
 
 .b {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .fw6 {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .input-reset {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-
-
 .input-reset::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+    border: 0;
+    padding: 0;
 }
 
 .lh-copy {
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 .link {
-  text-decoration: none;
-  transition: color 0.15s ease-in;
+    text-decoration: none;
+    transition: color 0.15s ease-in;
 }
 
 .link:link,
 .link:visited {
-  transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
 }
 
 .link:hover {
-  transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
 }
 
 .link:active {
-  transition: color 0.15s ease-in;
+    transition: color 0.15s ease-in;
 }
 
 .link:focus {
-  transition: color 0.15s ease-in;
-  outline: 1px dotted currentColor;
+    transition: color 0.15s ease-in;
+    outline: 1px dotted currentColor;
 }
 
 .w-100 {
-  width: 100%;
+    width: 100%;
 }
 
 .black-80 {
-  color: white;
+    color: white;
 }
 
 .black {
-  color: white;
+    color: white;
 }
 
 .bg-transparent {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .hover-white:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .hover-white:focus {
-  color: #fff;
+    color: #fff;
 }
 
 .hover-bg-black:hover {
-  background-color: #000;
+    background-color: #000;
 }
 
 .hover-bg-black:focus {
-  background-color: #000;
+    background-color: #000;
 }
 
 .pa0 {
-  padding: 0;
+    padding: 0;
 }
 
 .pa2 {
-  padding: 0.5rem;
+    padding: 0.5rem;
 }
 
 .pa4 {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 .pv2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 .ph0 {
-  padding-left: 0;
-  padding-right: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .ph3 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 .ma0 {
-  margin: 0;
+    margin: 0;
 }
 
 .mt3 {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 .mv3 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .mh0 {
-  margin-left: 0;
-  margin-right: 0;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .f4 {
-  font-size: 1.25rem;
+    font-size: 1.25rem;
 }
 
 .f6 {
-  font-size: 0.875rem;
+    font-size: 0.875rem;
 }
 
 .measure {
-  max-width: 30em;
+    max-width: 30em;
 }
 
 .center {
-  margin-right: auto;
-  margin-left: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .dim {
-  opacity: 1;
-  transition: opacity 0.15s ease-in;
+    opacity: 1;
+    transition: opacity 0.15s ease-in;
 }
 
 .dim:hover,
 .dim:focus {
-  opacity: 0.5;
-  transition: opacity 0.15s ease-in;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in;
 }
 
 .dim:active {
-  opacity: 0.8;
-  transition: opacity 0.15s ease-out;
+    opacity: 0.8;
+    transition: opacity 0.15s ease-out;
 }
 
 .grow {
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  transition: transform 0.25s ease-out;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
 }
 
 .grow:hover,
 .grow:focus {
-  transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .grow:active {
-  transform: scale(0.9);
+    transform: scale(0.9);
 }
 
 .pointer:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
