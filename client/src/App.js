@@ -50,7 +50,7 @@ const Routing = ({ setisSignin, searchmovies }) => {
         render={() => <Signup toggleSign={(value) => setisSignin(value)} />}
       />
       <Route
-        path="/home"
+        path="/home/:pageNumber"
         exact
         render={() => <MovieSection searchmovies={searchmovies} />}
       />
