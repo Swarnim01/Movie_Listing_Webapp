@@ -1,6 +1,7 @@
 .posters {
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
+  border-radius: 15px;
 }
 .posters:hover {
   transform: scale(1.2);
@@ -25,14 +26,14 @@
   opacity: 1;
   position: absolute;
 }
-.pagination{
+.pagination {
   display: flex;
   max-width: 100px;
-  margin:40px auto;
+  margin: 40px auto;
   margin-bottom: 0;
   align-items: center;
 }
-.page-number{
+.page-number {
   color: white;
   margin: 0 10px;
   border: 2px solid white;
@@ -40,7 +41,7 @@
   border-radius: 4px;
   transition: all 0.4s ease-out;
 }
-.page-number:hover{
+.page-number:hover {
   color: black;
   background: white;
   cursor: pointer;
