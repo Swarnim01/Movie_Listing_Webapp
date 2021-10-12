@@ -185,7 +185,7 @@ export default function Navbar({ setisSignin , handlesearch }) {
       <AppBar position='static' style={{ backgroundColor: 'transparent' }}>
         <Toolbar>
           <div
-            onClick={() => history.push('/home')}
+            onClick={() => history.push('/home/1')}
             style={{ cursor: 'pointer' }}
           >
             <Typography className={classes.title} variant='h6' noWrap>
