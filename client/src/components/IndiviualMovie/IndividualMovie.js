@@ -38,7 +38,7 @@ export default function IndividualMovie() {
   const [lastIndex, setLastIndex] = useState(null);
   useEffect(() => {
     if (currentMovie) return;
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -51,7 +51,7 @@ export default function IndividualMovie() {
   }, [currentMovie, movieId]);
   useEffect(() => {
     if (cast) return;
-    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
@@ -117,7 +117,7 @@ export default function IndividualMovie() {
               <p className="movie-tagline">{currentMovie.tagline}</p>
             )}
             <div className="movie-details-wrapper">
-              {currentMovie.runtime && (
+              {currentMovie.runtime > 0 && (
                 <div className="movie-runtime">
                   <p>Runtime</p>
                   <span>{currentMovie.runtime}&nbsp;Minutes</span>
