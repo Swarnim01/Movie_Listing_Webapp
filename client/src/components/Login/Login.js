@@ -31,8 +31,8 @@ const Login = ({ toggleSign }) => {
         else {
           toggleSign(true);
           toast.success("Successfully Signed In");
+          history.replace("/home/1");
           dispatch({ type: "USER", payload: data.savedperson });
-          history.replace("/home");
         }
       });
   };

@@ -24,20 +24,17 @@ GoogleSignInRouter.route("/").post(async (req, res, next) => {
     const { email, name, picture } = verify.payload;
     var savedperson = await Users.findOne({ email: email });
     if (savedperson) {
-      const token = jwt.sign({ id: savedperson._id }, process.env.JWT_SECRET);
+      const token = jwt.sign({ _id: savedperson._id }, process.env.JWT_SECRET);
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({ token, savedperson });
     } else {
-      try {
-        savedperson = new Users({
-          email: email,
-          username: name,
-        });
-        await savedperson.save();
-      } catch (error) {
-        console.log(error);
-      }
-      const token = jwt.sign({ id: savedperson._id }, process.env.JWT_SECRET);
+      savedperson = new Users({
+        email: email,
+        username: name,
+      });
+      await savedperson.save();
+
+      const token = jwt.sign({ _id: savedperson._id }, process.env.JWT_SECRET);
       res.cookie("token", token, { httpOnly: true });
       res.status(200).json({ token, savedperson });
     }

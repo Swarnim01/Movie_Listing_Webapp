@@ -16,7 +16,7 @@ const MovieSection = ({ searchmovies }) => {
   let history = useHistory();
   console.log("serachmoveis", searchmovies);
   const [movies, setmovies] = useState(null);
-  //const [page, setpage] = useState(1);
+  // const [page, setpage] = useState(1);
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
     console.log("PageNumber", pageNumber, url);
@@ -30,16 +30,16 @@ const MovieSection = ({ searchmovies }) => {
         console.log(err);
       });
   }, [pageNumber]);
-  //const alterpage = (e) => {
-  // if (e === 0) return;
-  //setpage(e);
-  //const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
-  //fetch(url)
-  // .then((res) => res.json())
-  // .then((data) => {
-  //   setmovies(data);
-  //   });
-  //};
+  // const alterpage = (e) => {
+  //   if (e === 0) return;
+  //   setpage(e);
+  //   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setmovies(data);
+  //     });
+  // };
   useEffect(() => {
     if (searchmovies && searchmovies.results)
       setTimeout(setmovies(searchmovies), 2000);
