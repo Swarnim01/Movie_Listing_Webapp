@@ -57,7 +57,7 @@ const Signup = () => {
       <main className='pa4 black-80'>
         <form className='measure center'>
           <fieldset id='sign_up' className='ba b--transparent ph0 mh0'>
-            <legend className='f4 fw6 ph0 mh0'>Sign In</legend>
+            <legend className='f4 fw6 ph0 mh0'>Sign Up</legend>
             <div className='mt3'>
               <label className='db fw6 lh-copy f6' for='email-address'>
                 Username
@@ -116,7 +116,7 @@ const Signup = () => {
           </div>
           <div className='mt3' style={{ display: 'flex' }}>
             <Link to='/login' className='f6 link dim black db'>
-              Already Signed Up ? Login
+              Already Signed Up ? Sign In
             </Link>
           </div>
         </form>
