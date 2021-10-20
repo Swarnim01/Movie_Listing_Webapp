@@ -8,6 +8,7 @@ import { red } from "@material-ui/core/colors";
 import toast from "react-hot-toast";
 import { UserContext } from "../../App";
 import "./Movies.css";
+import {ReactComponent as Loader} from "../../assets/loader.svg"
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
 
@@ -16,44 +17,49 @@ const MovieSection = ({ searchmovies }) => {
   let history = useHistory();
   console.log("serachmoveis", searchmovies);
   const [movies, setmovies] = useState(null);
+  const [loading,setLoading] = useState(true)
   // const [page, setpage] = useState(1);
-  useEffect(() => {
+  useEffect(async() => {
+    setLoading(true)
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
     console.log("PageNumber", pageNumber, url);
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setmovies(data);
+    await fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      setmovies(data);
+      setLoading(false)
       })
       .catch((err) => {
         console.log(err);
       });
-  }, [pageNumber]);
+    }, [pageNumber]);
   // const alterpage = (e) => {
-  //   if (e === 0) return;
+    //   if (e === 0) return;
   //   setpage(e);
   //   const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${e}`;
   //   fetch(url)
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       setmovies(data);
-  //     });
-  // };
-  useEffect(() => {
+    //       setmovies(data);
+    //     });
+    // };
+    useEffect(async() => {
+    setLoading(true)
     if (searchmovies && searchmovies.results)
-      setTimeout(setmovies(searchmovies), 2000);
+    setTimeout(setmovies(searchmovies), 2000);
     else {
       const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => {
-          setmovies(data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    await fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setmovies(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     }
+    // setLoading(false)
   }, [pageNumber, searchmovies]);
   const addfavourite = (id, poster_path) => {
     fetch("/favourite", {
@@ -103,7 +109,9 @@ const MovieSection = ({ searchmovies }) => {
               }}
             />
           </div>)} */}
-        {movies &&
+        {loading?
+        <Loader style={{marginTop:"200px"}}/>:
+        movies &&
           movies.results.map((element) => {
             const { poster_path, id } = element;
             return (
