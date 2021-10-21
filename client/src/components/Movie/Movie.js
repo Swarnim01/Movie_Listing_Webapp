@@ -19,11 +19,11 @@ const MovieSection = ({ searchmovies }) => {
   const [movies, setmovies] = useState(null);
   const [loading,setLoading] = useState(true)
   // const [page, setpage] = useState(1);
-  useEffect(async() => {
+  useEffect(() => {
     setLoading(true)
     const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
     console.log("PageNumber", pageNumber, url);
-    await fetch(url)
+    fetch(url)
     .then((res) => res.json())
     .then((data) => {
       console.log(data);
@@ -44,13 +44,13 @@ const MovieSection = ({ searchmovies }) => {
     //       setmovies(data);
     //     });
     // };
-    useEffect(async() => {
+    useEffect(() => {
     setLoading(true)
     if (searchmovies && searchmovies.results)
     setTimeout(setmovies(searchmovies), 2000);
     else {
       const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=f569e379d2c0bc46e541ef9379a90215&language=en-US&page=${pageNumber}`;
-    await fetch(url)
+      fetch(url)
       .then((res) => res.json())
       .then((data) => {
         setmovies(data);
