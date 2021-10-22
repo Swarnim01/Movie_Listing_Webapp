@@ -75,56 +75,55 @@ const Login = ({ toggleSign }) => {
           fontWeight: "bold",
           textAlign: "center",
         }}
+        className="container"
       >
         <p>Netflex</p>
       </div>
       <main className="pa4 black-80">
         <form className="measure center">
-          <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-            <legend className="f4 fw6 ph0 mh0">Login</legend>
-            <div className="mt3">
-              <label className="db fw6 lh-copy f6" for="email-address">
-                Email
-              </label>
-              <input
-                className="pa2 input-reset ba bg-transparent hover-white w-100"
-                style={{ color: "white" }}
-                type="email"
-                name="email-address"
-                id="email-address"
-                onChange={(e) => OnEmailChange(e)}
-              />
-            </div>
-            <div className="mv3">
-              <label className="db fw6 lh-copy f6" for="password">
-                Password
-              </label>
-              <input
-                className="b pa2 input-reset ba bg-transparent hover-white w-100"
-                style={{ color: "white" }}
-                type="password"
-                name="password"
-                id="password"
-                onChange={(e) => OnPasswordChange(e)}
-              />
-            </div>
-            <label className="pa0 ma0 lh-copy f6 pointer">
-              <input type="checkbox" /> Remember me
+          <fieldset id="sign_up" className="ba b--transparent ph0 mh0" />
+          <legend className="f4 fw6 ph0 mh0">Sign In</legend>
+          <div className="mt3">
+            <label className="db fw6 lh-copy f6" for="email-address">
+              Email
             </label>
-          </fieldset>
-          <div className="">
             <input
-              className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
-              type="submit"
-              value="Sign in"
-              style={{
-                color: "black",
-                backgroundColor: "red",
-                border: "none",
-              }}
-              onClick={(e) => OnSubmitSignin(e)}
+              className="pa2 input-reset ba bg-transparent  hover-white w-100"
+              style={{ color: "white" }}
+              type="email"
+              name="email-address"
+              id="email-address"
+              onChange={(e) => OnEmailChange(e)}
             />
           </div>
+          <div className="mv3">
+            <label className="db fw6 lh-copy f6" for="password">
+              Password
+            </label>
+            <input
+              className="b pa2 input-reset ba bg-transparent hover-white w-100"
+              style={{ color: "white" }}
+              type="password"
+              name="password"
+              id="password"
+              onChange={(e) => OnPasswordChange(e)}
+            />
+          </div>
+          <label className="pa0 ma0 lh-copy f6 pointer">
+            <input type="checkbox" /> Remember me
+          </label>
+          <input
+            className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+            type="submit"
+            value="Sign In"
+            style={{
+              color: "white",
+              backgroundColor: "red",
+              border: "none",
+            }}
+            onClick={(e) => OnSubmitSignin(e)}
+          />
+
           <div>
             <GoogleLogin
               clientId="609352835063-nbhju2f1sluankm9n3itapdvr4d0aejc.apps.googleusercontent.com"
