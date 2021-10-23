@@ -86,7 +86,8 @@ const MovieSection = ({ searchmovies }) => {
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-        }}>
+        }}
+      >
         {/* {movies && ( <div onClick={() => alterpage(page + 1)}>
             <ArrowBackIosIcon
               style={{
@@ -129,7 +130,8 @@ const MovieSection = ({ searchmovies }) => {
                   className="favouritetab"
                   onClick={() => {
                     addfavourite(id, poster_path);
-                  }}>
+                  }}
+                >
                   Favourite{"  "} &nbsp;
                   <FavoriteIcon style={{ color: red[500] }} />
                 </div>
