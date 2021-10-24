@@ -127,9 +127,9 @@ const Login = ({ toggleSign }) => {
                 }}
                 onClick={(e) => OnSubmitSignin(e)}
               />
-            </div>
-            <div>
+           
               <GoogleLogin
+               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 clientId="609352835063-nbhju2f1sluankm9n3itapdvr4d0aejc.apps.googleusercontent.com"
                 buttonText="Login"
                 onSuccess={responseSuccessGoogle}
