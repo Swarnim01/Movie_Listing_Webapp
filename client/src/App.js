@@ -31,7 +31,8 @@ const Routing = ({ setisSignin, searchmovies }) => {
       .then((response) => response.json())
       .then((data) => {
         if (data) {
-          history.replace("/home");
+          console.log("in login");
+          history.replace("/home/1");
           setisSignin(true);
           dispatch({ type: "USER", payload: data.userdata });
         } else history.push("/login");
@@ -91,6 +92,7 @@ const App = () => {
               },
             }}
           />
+          {console.log(isSignin)}
           {isSignin ? (
             <Navbar
               setisSignin={setisSignin}

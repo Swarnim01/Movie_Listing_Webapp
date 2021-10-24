@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import toast from "react-hot-toast";
 import { UserContext } from "../../App";
 import "./Login.css";
+import GoogleLogin from "react-google-login";
 const Login = ({ toggleSign }) => {
   let history = useHistory();
   const { state, dispatch } = useContext(UserContext);
@@ -15,6 +16,27 @@ const Login = ({ toggleSign }) => {
   const OnPasswordChange = (event) => {
     setpassword(event.target.value);
   };
+  const responseSuccessGoogle = (response) => {
+    console.log(response);
+    fetch("/googlelogin", {
+      method: "post",
+      credentials: "include",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ response }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.error) toast.error(data.error);
+        else {
+          toggleSign(true);
+          toast.success("Successfully Signed In");
+          history.replace("/home/1");
+          dispatch({ type: "USER", payload: data.savedperson });
+        }
+      });
+  };
+  const responseErrorGoogle = (response) => {};
   const OnSubmitSignin = (e) => {
     e.preventDefault();
     fetch("/signin", {
@@ -33,7 +55,7 @@ const Login = ({ toggleSign }) => {
         else {
           toggleSign(true);
           toast.success("Successfully Signed In");
-          history.replace("/home/1");
+          history.replace("/home");
           dispatch({ type: "USER", payload: data.savedperson });
         }
       });
@@ -47,14 +69,16 @@ const Login = ({ toggleSign }) => {
           border: "1px solid white",
           width: "40rem",
         }}
-        className="container">
+        className="container"
+      >
         <div
           style={{
             color: "red",
             fontSize: "1.5rem",
             fontWeight: "bold",
             textAlign: "center",
-          }}>
+          }}
+        >
           <p>Netflex</p>
         </div>
         <main className="pa4 black-80">
@@ -104,6 +128,16 @@ const Login = ({ toggleSign }) => {
                 onClick={(e) => OnSubmitSignin(e)}
               />
             </div>
+            <div>
+              <GoogleLogin
+                clientId="609352835063-nbhju2f1sluankm9n3itapdvr4d0aejc.apps.googleusercontent.com"
+                buttonText="Login"
+                onSuccess={responseSuccessGoogle}
+                onFailure={responseErrorGoogle}
+                cookiePolicy={"single_host_origin"}
+              />
+            </div>
+
             <div className="mt3" style={{ display: "flex" }}>
               <Link to="/signup" className="f6 link dim black db">
                 Don't Have a Account ? Sign up
