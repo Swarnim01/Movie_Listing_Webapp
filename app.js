@@ -14,6 +14,7 @@ const Users = require("./models/user");
 const ProtectedRouter = require("./routes/protected");
 const LogoutRouter = require("./routes/logout");
 const FavouriteRouter = require("./routes/favourite");
+const GoogleSignInRouter = require("./routes/googlelogin");
 
 const connect = mongoose.connect(process.env.MONGOURI, {
   useNewUrlParser: true,
@@ -45,8 +46,11 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/signup", SignUpRouter);
 app.use("/signin", SignInRouter);
+app.use("/googlelogin", GoogleSignInRouter);
+
 app.use("/logout", LogoutRouter);
 app.use("/protected", ProtectedRouter);
+
 app.use(FavouriteRouter);
 
 if (process.env.NODE_ENV === "production") {
