@@ -1,9 +1,16 @@
+<div align="center">
+
 # Movie_Listing_Webapp
+[![GitHub issues](https://img.shields.io/github/issues/Swarnim01/Movie_Listing_Webapp?style=for-the-badge)](https://github.com/Swarnim01/Movie_Listing_Webapp/issues)
+[![GitHub forks](https://img.shields.io/github/forks/Swarnim01/Movie_Listing_Webapp?style=for-the-badge)](https://github.com/Swarnim01/Movie_Listing_Webapp/network)
+[![GitHub stars](https://img.shields.io/github/stars/Swarnim01/Movie_Listing_Webapp?style=for-the-badge)](https://github.com/Swarnim01/Movie_Listing_Webapp/stargazers)
+</div>
 
 ## Features
 
-- LogIn, SignUp and LogOut
-
+- LogIn, SignUp and LogOut 
+    - google authorization is also available while signIn
+  <br>
 - Search movies via Keywords
 
 - Get the following details for a specific movie:
@@ -62,16 +69,16 @@ server will run in port 5000 and frontend will request to 5000 port itself due p
 
 #### Login/Signup Screen
 
-![Login/SignUp](https://user-images.githubusercontent.com/78133928/137311280-d0a7003f-b04e-4528-a5cd-02e2dac4c8d7.JPG "Authentication Screens")
+![Login/SignUp](https://user-images.githubusercontent.com/84467090/138818184-91803003-6a5b-4c0d-9fb0-2434a6003513.jpeg "Authentication Screens")
 
 #### Home Screen
 
-![Search](https://user-images.githubusercontent.com/78133928/137313953-66f171c2-3638-470c-98a6-a113bd3aa173.JPG "Home Screen with Search and Logout feature")
+![Search](https://user-images.githubusercontent.com/84467090/138818648-4de5bc4c-1fe4-430a-95f7-daeee88516ed.jpeg "Home Screen with Search and Logout feature")
 
 #### Movie Screen
 
-![Movie](https://user-images.githubusercontent.com/78133928/137314631-1b62a18b-4ab2-4f19-8c69-e92a49e4ee00.JPG "Movie Screen with details and 'Favourite' feature")
+![Movie](https://user-images.githubusercontent.com/84467090/138818783-601402db-8dae-4b60-9c23-5af5443bc964.jpeg "Movie Screen with details and 'Favourite' feature")
 
 #### Favourites Screen
 
-![Favourites](https://user-images.githubusercontent.com/78133928/137311493-5f92dd0c-4dff-43e8-a9aa-ad98bead750a.JPG "Favourites Screen with 'Remove Favourite' feature")
+![Favourites](https://user-images.githubusercontent.com/84467090/138818716-e87f1f5c-abc7-4288-b26d-2e052516c3a3.jpeg "Favourites Screen with 'Remove Favourite' feature")
