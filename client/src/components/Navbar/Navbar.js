@@ -19,6 +19,10 @@ import toast from 'react-hot-toast';
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
+    position:'sticky',
+    top:'0px',
+    zIndex:10,
+    backgroundColor:'black'
   },
   menuButton: {
     marginRight: theme.spacing(2),
