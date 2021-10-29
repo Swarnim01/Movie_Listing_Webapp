@@ -5,6 +5,7 @@ import React, {
   createContext,
   useContext,
 } from "react";
+
 import Navbar from "./components/Navbar/Navbar";
 import MovieSection from "./components/Movie/Movie";
 import Login from "./components/Login/Login";
@@ -15,6 +16,7 @@ import Signup from "./components/Signup/Signup";
 import Movie from "./components/IndiviualMovie/IndividualMovie";
 import "./App.css";
 import Favourite from "./components/Favourite/Favourite";
+import { Sugar } from "react-preloaders2";
 
 export const UserContext = createContext();
 
@@ -102,6 +104,7 @@ const App = () => {
           <Routing setisSignin={setisSignin} searchmovies={searchmovies} />
         </BrowserRouter>
       </UserContext.Provider>
+      <Sugar background="#000" color="#ff0000" />
     </div>
   );
 };
