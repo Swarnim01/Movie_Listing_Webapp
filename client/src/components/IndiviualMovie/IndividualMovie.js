@@ -5,6 +5,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { red } from "@material-ui/core/colors";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
+import LinkIcon from '@material-ui/icons/Link';
 import "./IndiviualMovie.css";
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
@@ -112,7 +113,12 @@ export default function IndividualMovie() {
             </div>
           </div>
           <div className="movie-info">
-            <p className="movie-title">{currentMovie.original_title}</p>
+            <p className="movie-title">
+              {currentMovie.original_title} 
+              <a href={currentMovie.homepage} target="_blank" style={{color:'white',marginLeft:'5px'}}>
+                  <LinkIcon style={{ verticalAlign:'middle'}}/>
+              </a>
+            </p>
             {currentMovie.tagline && (
               <p className="movie-tagline">{currentMovie.tagline}</p>
             )}

@@ -44,7 +44,7 @@ const Favourite = () => {
           flexWrap: 'wrap',
         }}
       >
-        {favourites && favourites.length !== 0 &&
+        {favourites && favourites.length > 0 ?
           (favourites?.map(({ poster_path, movieId }) => {
             return (
               <div style={{ margin: '0.3rem', position: 'relative' }}>
@@ -66,7 +66,10 @@ const Favourite = () => {
                 </div>
               </div>
             );
-          }))}
+          }))
+        :
+        <h3 style={{color:"white",margin:"auto"}}>You have not added any movie to your favourites</h3>        
+        }
       </div>
     </div>
   );
