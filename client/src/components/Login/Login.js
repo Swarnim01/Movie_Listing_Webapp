@@ -90,7 +90,7 @@ const Login = ({ toggleSign }) => {
                   Email
                 </label>
                 <input
-                  className="pa2 input-reset ba bg-transparent  hover-white w-100"
+                  className="pa2 input-reset ba bg-transparent hover-bg-black  hover-white w-100"
                   style={{ color: "white" }}
                   type="email"
                   name="email-address"
@@ -103,7 +103,7 @@ const Login = ({ toggleSign }) => {
                   Password
                 </label>
                 <input
-                  className="b pa2 input-reset ba bg-transparent hover-white w-100"
+                  className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                   style={{ color: "white" }}
                   type="password"
                   name="password"
@@ -117,7 +117,7 @@ const Login = ({ toggleSign }) => {
             </fieldset>
             <div className="">
               <input
-                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black hover-bg-black bg-transparent grow pointer f6 dib"
                 type="submit"
                 value="Sign In"
                 style={{
