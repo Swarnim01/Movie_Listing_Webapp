@@ -55,13 +55,12 @@ const Signup = () => {
   return (
     <div className="body">
       <div
-        style={{
-          margin: "10rem auto",
-          border: "1px solid white",
-          width: "40rem",
-        }}
-        className="container"
-      >
+      style={{
+        margin: '10rem auto',
+        border: '1px solid white',
+      }}
+      className="container"
+    >
         <div
           style={{
             color: "red",
