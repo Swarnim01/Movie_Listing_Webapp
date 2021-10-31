@@ -29,9 +29,19 @@ const Signup = () => {
     toast.error("The passwords do not match");
     return false;
   }
+  function checkEmail (email)
+{
+  let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  if (email.match(regexEmail)) {
+    return true; 
+  } else {
+    toast.error("This email address is not valid");
+    return false; 
+  }
+}
   const OnSubmitSignup = (e) => {
     e.preventDefault();
-    if (checkPassword(password, passwordAgain)) {
+    if (checkPassword(password, passwordAgain)&&checkEmail(email)) {
       fetch("/signup", {
         method: "post",
         credentials: "include",
