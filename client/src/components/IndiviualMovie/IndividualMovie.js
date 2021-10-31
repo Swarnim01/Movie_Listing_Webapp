@@ -5,7 +5,7 @@ import FavoriteIcon from "@material-ui/icons/Favorite";
 import { red } from "@material-ui/core/colors";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import LinkIcon from '@material-ui/icons/Link';
+import LinkIcon from "@material-ui/icons/Link";
 import "./IndiviualMovie.css";
 
 const POSTER_PATH = "https://image.tmdb.org/t/p/original";
@@ -86,13 +86,15 @@ export default function IndividualMovie() {
           <div
             style={{
               margin: "0.3rem",
-            }}>
+            }}
+          >
             <div
               style={{
                 border: "solid white 2px",
                 width: "10rem",
                 position: "relative",
-              }}>
+              }}
+            >
               <img
                 src={`${POSTER_PATH}${currentMovie.poster_path}`}
                 alt="poster"
@@ -106,7 +108,8 @@ export default function IndividualMovie() {
                 className="favouritetab"
                 onClick={() => {
                   addfavourite(currentMovie.id, currentMovie.poster_path);
-                }}>
+                }}
+              >
                 Favourite{"  "} &nbsp;
                 <FavoriteIcon style={{ color: red[500] }} />
               </div>
@@ -114,9 +117,13 @@ export default function IndividualMovie() {
           </div>
           <div className="movie-info">
             <p className="movie-title">
-              {currentMovie.original_title} 
-              <a href={currentMovie.homepage} target="_blank" style={{color:'white',marginLeft:'5px'}}>
-                  <LinkIcon style={{ verticalAlign:'middle'}}/>
+              {currentMovie.original_title}
+              <a
+                href={currentMovie.homepage}
+                target="_blank"
+                style={{ color: "white", marginLeft: "5px" }}
+              >
+                <LinkIcon style={{ verticalAlign: "middle" }} />
               </a>
             </p>
             {currentMovie.tagline && (
@@ -169,6 +176,7 @@ export default function IndividualMovie() {
                     />
 
                     {reducedCast.map((cast) => {
+                      const url = `https://en.wikipedia.org/wiki/${cast.name}`;
                       return (
                         <div>
                           {cast.profile_path && (
@@ -183,7 +191,11 @@ export default function IndividualMovie() {
                               }}
                             />
                           )}
-                          <p className="cast-name">{cast.name}</p>
+                          <p className="cast-name">
+                            <a href={url} target="_blank" rel="noreferrer">
+                              {cast.name}
+                            </a>
+                          </p>
                           <p className="cast-character">{cast.character}</p>
                         </div>
                       );
