@@ -10,12 +10,16 @@
 }
 
 .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background-image: url("../../assets/theatre.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #111111, -5px -5px 10px #171717;
+  max-width: 40rem;
 }
 
 .ba {
