@@ -40,7 +40,6 @@ const Signup = () => {
       style={{
         margin: '10rem auto',
         border: '1px solid white',
-        width: '40rem',
       }}
       className="container"
     >

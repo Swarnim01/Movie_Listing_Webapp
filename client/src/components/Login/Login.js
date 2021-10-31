@@ -66,8 +66,7 @@ const Login = ({ toggleSign }) => {
       <div
         style={{
           margin: "10rem auto",
-          border: "1px solid white",
-          width: "40rem",
+          border: "1px solid white", 
         }}
         className="container"
       >
