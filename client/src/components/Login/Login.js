@@ -55,7 +55,7 @@ const Login = ({ toggleSign }) => {
         else {
           toggleSign(true);
           toast.success("Successfully Signed In");
-          history.replace("/home");
+          history.replace("/home/1");
           dispatch({ type: "USER", payload: data.savedperson });
         }
       });
@@ -66,7 +66,7 @@ const Login = ({ toggleSign }) => {
       <div
         style={{
           margin: "10rem auto",
-          border: "1px solid white", 
+          border: "1px solid white",
         }}
         className="container"
       >
@@ -126,9 +126,9 @@ const Login = ({ toggleSign }) => {
                 }}
                 onClick={(e) => OnSubmitSignin(e)}
               />
-           
+
               <GoogleLogin
-               className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
+                className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 clientId="609352835063-nbhju2f1sluankm9n3itapdvr4d0aejc.apps.googleusercontent.com"
                 buttonText="Login"
                 onSuccess={responseSuccessGoogle}
